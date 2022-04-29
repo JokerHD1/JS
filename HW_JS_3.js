@@ -446,7 +446,7 @@ const ID =
     }
     ];
 
-console.log(Array.from(new Set(ID)))
+Array.from(new Set(ID))
 
 /*Task 2*** Реализуйте считывание из JSONки из файла task2.json с помощью, например,
 модуля fs. для дальнейшего использования в функции, описанной в задании*/
@@ -454,12 +454,11 @@ console.log(Array.from(new Set(ID)))
 const fs = require('fs')
 let json_data = fs.readFileSync('task2.json')
 const people = JSON.parse(json_data)
-console.log(Array.from(new Set(people)))
+Array.from(new Set(people))
 
 /*Task 3**
 В файле task3.txt найдете структуру компании и задания, необходимые выполнить.
-
-    Примечание: ВСЕ задания выполнять не обязательно, если вам люто сложно. Но ПЕРВОЕ - прям надо всем:)*/
+*/
 
 const enterprises = [
     {
@@ -516,10 +515,61 @@ const enterprises = [
         ]
     }
 ]
+// 1. Вывести все предприятия и их отделы. Рядом указать количество сотрудников.
+//     Для предприятия посчитать сумму всех сотрудников во всех отделах.
 
+let testing_1 = enterprises[0].departments[0]
+let marketing_1 = enterprises[0].departments[1]
+let admin_1 = enterprises[0].departments[2]
+let ent_1_sum = testing_1.employees_count + marketing_1.employees_count + admin_1.employees_count
 
+let dev_2 = enterprises[1].departments[0]
+let marketing_2 = enterprises[1].departments[1]
+let security_2 = enterprises[1].departments[2]
+let ent_2_sum = dev_2.employees_count + marketing_2.employees_count + security_2.employees_count
 
+let analytic_3 = enterprises[2].departments[0]
+let ent_3_sum = analytic_3.employees_count
 
+console.log(enterprises[0].name + " (" + ent_1_sum + " сотрудников)")
+console.log("- " + testing_1.name + " (" + testing_1.employees_count + " сотрудников)")
+console.log("- " + marketing_1.name + " (" + marketing_1.employees_count + " сотрудников)")
+console.log("- " + admin_1.name + " (" + admin_1.employees_count + " сотрудников)")
+console.log(enterprises[1].name + " (" + ent_2_sum + " сотрудников)")
+console.log("- " + dev_2.name + " (" + dev_2.employees_count + " сотрудников)")
+console.log("- " + marketing_2.name + " (" + marketing_2.employees_count + " сотрудников)")
+console.log("- " + security_2.name + " (" + security_2.employees_count + " сотрудников)")
+console.log(enterprises[2].name + " (" + ent_3_sum + " сотрудников)")
+console.log("- " + analytic_3.name + " (" + analytic_3.employees_count + " сотрудников)")
+
+// 2. Написать функцию, которая будет принимать 1 аргумент
+// (id отдела или название отдела и возвращать название предприятия, к которому относится)
+
+function get_Enterprise_Name(name_1){
+    if (typeof name_1 === "number") {
+if (name_1 <= 4 && name_1 > 0) {
+    return "Предприятие 1"
+}
+else if (name_1 <= 8 && name_1 > 4 ){
+    return "Предприятие 2"
+}
+else if (name_1 <= 10 && name_1 > 8){
+    return "Предприятие 3"
+}
+else return "Проверьте вводимые значения"
+    } else if (typeof name_1 === "string"){
+if (name_1 === "Отдел тестирования" || name_1 === "Администрация"){
+    return "Предприятие 1"
+}else if (name_1 === "Отдел маркетинга"){
+    return "Предприятие 1, Предприятие 2"
+}else if (name_1 === "Отдел разработки" || name_1 === "Отдел охраны труда"){
+    return "Предприятие 2"
+} else if (name_1 === "Отдел аналитики"){
+    return "Предприятие 3"
+} else return "Проверьте вводимые значения"
+    }  else return "Проверьте вводимые значения"
+}
+console.log(get_Enterprise_Name("Отдел аналитики"))
 
 
 /*Task 4****
@@ -532,5 +582,88 @@ const enterprises = [
 
     Функция строит древовидный список компании.
     При ее вызове в консоль должен вывестись список подразделений компании
-     с указанием количества сотрудников и с соблюдение вложенности подразделений.
+     с указанием количества сотрудников и с соблюдением вложенности подразделений.
  */
+
+const company = [
+    {
+        id: 1,
+        name: "Компания",
+        parent: null,
+        users_count: 10,
+        children: [
+            {
+                id: 2,
+                name: "Отдел тестирования",
+                parent: 1,
+                users_count: 7,
+                children: [
+                    {
+                        id: 2,
+                        name: "Тестирование Web",
+                        parent: 2,
+                        users_count: 5,
+                    },
+                    {
+                        id: 3,
+                        name: "Тестирование Mobile",
+                        parent: 2,
+                        users_count: 0,
+                    },
+                ]
+            },
+            {
+                id: 4,
+                name: "Отдел маркетинга",
+                parent: 1,
+                users_count: 30,
+            },
+            {
+                id: 5,
+                name: "Администрация",
+                parent: 1,
+                users_count: 25,
+                children: [
+                    {
+                        id: 6,
+                        name: "Бухгалтерия",
+                        parent: 5,
+                        users_count: 10,
+                    },
+                    {
+                        id: 7,
+                        name: "Менеджмент",
+                        parent: 5,
+                        users_count: 15,
+                        children: [
+                            {
+                                id: 8,
+                                name: "Подраздел менеджмента 1",
+                                parent: 7,
+                                users_count: 5,
+                            },
+                            {
+                                id: 9,
+                                name: "Подраздел менеджмента 2",
+                                parent: 7,
+                                users_count: 10,
+                            }
+                        ]
+                    },
+                    {
+                        id: 10,
+                        name: "HR",
+                        parent: 5,
+                        users_count: 1,
+                    }
+                ]
+            },
+        ]
+    }
+]
+
+function Tree(){
+return "список подразделений компании с указанием количества сотрудников и с соблюдением вложенности подразделений"
+}
+
+console.log(Tree())
