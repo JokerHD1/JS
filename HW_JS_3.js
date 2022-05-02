@@ -91,6 +91,7 @@ console.log(users.filter(Date => Date.registrationDate === "09.10.2021" || Date.
 
 Дан массив объектов. Каждый объект является идентификационной карточкой человека.
     Нам нужно хранить только уникальные значения в этом массиве. Реализуйте функцию, которая будет выполнять эту работу.*/
+
 const ID =
     [{
     "name": "Leanne Graham",
@@ -446,7 +447,9 @@ const ID =
     }
     ];
 
-Array.from(new Set(ID))
+let unique = Array.from(new Set(ID.map(item => JSON.stringify(item)))).map(item => JSON.parse(item));
+
+console.log(unique)
 
 /*Task 2*** Реализуйте считывание из JSONки из файла task2.json с помощью, например,
 модуля fs. для дальнейшего использования в функции, описанной в задании*/
@@ -454,7 +457,9 @@ Array.from(new Set(ID))
 const fs = require('fs')
 let json_data = fs.readFileSync('task2.json')
 const people = JSON.parse(json_data)
-Array.from(new Set(people))
+let unique_1 = Array.from(new Set(people.map(item => JSON.stringify(item)))).map(item => JSON.parse(item));
+
+console.log(unique_1)
 
 /*Task 3**
 В файле task3.txt найдете структуру компании и задания, необходимые выполнить.
