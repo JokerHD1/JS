@@ -459,8 +459,6 @@ let json_data = fs.readFileSync('task2.json')
 const people = JSON.parse(json_data)
 let unique_1 = Array.from(new Set(people.map(item => JSON.stringify(item)))).map(item => JSON.parse(item));
 
-console.log(unique_1)
-
 /*Task 3**
 В файле task3.txt найдете структуру компании и задания, необходимые выполнить.
 */
@@ -523,29 +521,11 @@ const enterprises = [
 // 1. Вывести все предприятия и их отделы. Рядом указать количество сотрудников.
 //     Для предприятия посчитать сумму всех сотрудников во всех отделах.
 
-let testing_1 = enterprises[0].departments[0]
-let marketing_1 = enterprises[0].departments[1]
-let admin_1 = enterprises[0].departments[2]
-let ent_1_sum = testing_1.employees_count + marketing_1.employees_count + admin_1.employees_count
 
-let dev_2 = enterprises[1].departments[0]
-let marketing_2 = enterprises[1].departments[1]
-let security_2 = enterprises[1].departments[2]
-let ent_2_sum = dev_2.employees_count + marketing_2.employees_count + security_2.employees_count
 
-let analytic_3 = enterprises[2].departments[0]
-let ent_3_sum = analytic_3.employees_count
 
-console.log(enterprises[0].name + " (" + ent_1_sum + " сотрудников)")
-console.log("- " + testing_1.name + " (" + testing_1.employees_count + " сотрудников)")
-console.log("- " + marketing_1.name + " (" + marketing_1.employees_count + " сотрудников)")
-console.log("- " + admin_1.name + " (" + admin_1.employees_count + " сотрудников)")
-console.log(enterprises[1].name + " (" + ent_2_sum + " сотрудников)")
-console.log("- " + dev_2.name + " (" + dev_2.employees_count + " сотрудников)")
-console.log("- " + marketing_2.name + " (" + marketing_2.employees_count + " сотрудников)")
-console.log("- " + security_2.name + " (" + security_2.employees_count + " сотрудников)")
-console.log(enterprises[2].name + " (" + ent_3_sum + " сотрудников)")
-console.log("- " + analytic_3.name + " (" + analytic_3.employees_count + " сотрудников)")
+
+
 
 // 2. Написать функцию, которая будет принимать 1 аргумент
 // (id отдела или название отдела и возвращать название предприятия, к которому относится)
