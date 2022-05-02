@@ -530,6 +530,7 @@ for (let i = 0; i < enterprises.length; i++)
     {
         sum += enterprises[i].departments[k].employees_count
     }
+
     //Выводим число сотрудников для предприятий
     console.log(enterprises[i].name + " (" + sum + " сотрудников)")
     //Выводим число струдников для отделов
