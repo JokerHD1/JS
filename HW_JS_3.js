@@ -525,8 +525,7 @@ let sum = 0
 
 for (let i = 0; i < enterprises.length; i++)
 {
-    //TODO: Суммируем количество сотрудников на предприятиях (для каждой новой итерации i
-    //TODO: должно обнуляться sum)
+    //Суммируем количество сотрудников на предприятиях
     for (let k = 0; k< enterprises[i].departments.length; k++)
     {
         sum += enterprises[i].departments[k].employees_count
@@ -540,6 +539,7 @@ for (let i = 0; i < enterprises.length; i++)
         let empDepNames = enterprises[i].departments[k].name
         console.log("- " + empDepNames + " (" + empDepCount + " сотрудников)")
     }
+    sum = 0
 }
 
 
