@@ -521,8 +521,26 @@ const enterprises = [
 // 1. Вывести все предприятия и их отделы. Рядом указать количество сотрудников.
 //     Для предприятия посчитать сумму всех сотрудников во всех отделах.
 
+let sum = 0
 
-
+for (let i = 0; i < enterprises.length; i++)
+{
+    //TODO: Суммируем количество сотрудников на предприятиях (для каждой новой итерации i
+    //TODO: должно обнуляться sum)
+    for (let k = 0; k< enterprises[i].departments.length; k++)
+    {
+        sum += enterprises[i].departments[k].employees_count
+    }
+    //Выводим число сотрудников для предприятий
+    console.log(enterprises[i].name + " (" + sum + " сотрудников)")
+    //Выводим число струдников для отделов
+    for (let k = 0; k< enterprises[i].departments.length; k++)
+    {
+        let empDepCount = enterprises[i].departments[k].employees_count
+        let empDepNames = enterprises[i].departments[k].name
+        console.log("- " + empDepNames + " (" + empDepCount + " сотрудников)")
+    }
+}
 
 
 
@@ -530,31 +548,31 @@ const enterprises = [
 // 2. Написать функцию, которая будет принимать 1 аргумент
 // (id отдела или название отдела и возвращать название предприятия, к которому относится)
 
-function get_Enterprise_Name(name_1){
-    if (typeof name_1 === "number") {
-if (name_1 <= 4 && name_1 > 0) {
-    return "Предприятие 1"
-}
-else if (name_1 <= 8 && name_1 > 4 ){
-    return "Предприятие 2"
-}
-else if (name_1 <= 10 && name_1 > 8){
-    return "Предприятие 3"
-}
-else return "Проверьте вводимые значения"
-    } else if (typeof name_1 === "string"){
-if (name_1 === "Отдел тестирования" || name_1 === "Администрация"){
-    return "Предприятие 1"
-}else if (name_1 === "Отдел маркетинга"){
-    return "Предприятие 1, Предприятие 2"
-}else if (name_1 === "Отдел разработки" || name_1 === "Отдел охраны труда"){
-    return "Предприятие 2"
-} else if (name_1 === "Отдел аналитики"){
-    return "Предприятие 3"
-} else return "Проверьте вводимые значения"
-    }  else return "Проверьте вводимые значения"
-}
-console.log(get_Enterprise_Name("Отдел аналитики"))
+// function get_Enterprise_Name(name_1){
+//     if (typeof name_1 === "number") {
+// if (name_1 <= 4 && name_1 > 0) {
+//     return "Предприятие 1"
+// }
+// else if (name_1 <= 8 && name_1 > 4 ){
+//     return "Предприятие 2"
+// }
+// else if (name_1 <= 10 && name_1 > 8){
+//     return "Предприятие 3"
+// }
+// else return "Проверьте вводимые значения"
+//     } else if (typeof name_1 === "string"){
+// if (name_1 === "Отдел тестирования" || name_1 === "Администрация"){
+//     return "Предприятие 1"
+// }else if (name_1 === "Отдел маркетинга"){
+//     return "Предприятие 1, Предприятие 2"
+// }else if (name_1 === "Отдел разработки" || name_1 === "Отдел охраны труда"){
+//     return "Предприятие 2"
+// } else if (name_1 === "Отдел аналитики"){
+//     return "Предприятие 3"
+// } else return "Проверьте вводимые значения"
+//     }  else return "Проверьте вводимые значения"
+// }
+// console.log(get_Enterprise_Name("Отдел аналитики"))
 
 
 /*Task 4****
@@ -647,8 +665,8 @@ const company = [
     }
 ]
 
-function Tree(){
-return "список подразделений компании с указанием количества сотрудников и с соблюдением вложенности подразделений"
-}
-
-console.log(Tree())
+// function Tree(){
+// return "список подразделений компании с указанием количества сотрудников и с соблюдением вложенности подразделений"
+// }
+//
+// console.log(Tree())
