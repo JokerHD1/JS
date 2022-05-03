@@ -458,6 +458,7 @@ const fs = require('fs')
 let json_data = fs.readFileSync('task2.json')
 const people = JSON.parse(json_data)
 let unique_1 = Array.from(new Set(people.map(item => JSON.stringify(item)))).map(item => JSON.parse(item));
+console.log(unique_1)
 
 /*Task 3**
 В файле task3.txt найдете структуру компании и задания, необходимые выполнить.
