@@ -523,7 +523,15 @@ const enterprises = [
 //     Для предприятия посчитать сумму всех сотрудников во всех отделах.
 
 let sum = 0
-
+function declOfNum(n, text_forms) {
+    n = Math.abs(n) % 100
+    let n1 = n % 10
+    if (n === 0) {return text_forms[3]}
+    if (n > 10 && n < 20) {return text_forms[2]}
+    if (n1 > 1 && n1 < 5) {return text_forms[1]}
+    if (n1 === 1) {return text_forms[0]}
+    return text_forms[2]
+}
 for (let i = 0; i < enterprises.length; i++)
 {
     //Суммируем количество сотрудников на предприятиях
@@ -533,13 +541,23 @@ for (let i = 0; i < enterprises.length; i++)
     }
 
     //Выводим число сотрудников для предприятий
-    console.log(enterprises[i].name + " (" + sum + " сотрудников)")
+    console.log(declOfNum(sum,
+        [enterprises[i].name + " (" + sum + " сотрудник)",
+        enterprises[i].name + " (" + sum + " сотрудника)",
+        enterprises[i].name + " (" + sum + " сотрудников)",
+        enterprises[i].name +  " (нет сотрудников)"]))
+
     //Выводим число струдников для отделов
     for (let k = 0; k< enterprises[i].departments.length; k++)
     {
         let empDepCount = enterprises[i].departments[k].employees_count
         let empDepNames = enterprises[i].departments[k].name
-        console.log("- " + empDepNames + " (" + empDepCount + " сотрудников)")
+
+        console.log(declOfNum(empDepCount,
+            ["- " + empDepNames + " (" + empDepCount + " сотрудник)",
+            "- " + empDepNames + " (" + empDepCount + " сотрудника)",
+            "- " + empDepNames + " (" + empDepCount + " сотрудников)",
+            "- " + empDepNames + " (нет сотрудников)"]))
     }
     sum = 0
 }
@@ -582,10 +600,11 @@ function get_Enterprise_Name (name_1)
 console.log(get_Enterprise_Name("Отдел аналитики"))
 
 //3. Написать функцию, которая будет добавлять предприятие. В качестве аргумента принимает название предприятия
-
+console.log(enterprises.slice(-1)[0].departments.slice(-1)[0].id + 1)
 function Add_New_Enterprise (New_Enterprise)
 {
-
+enterprises.push(New_Enterprise, enterprises.slice(-1)[0].departments.slice(-1)[0].id + 1, [])
+    return enterprises
 }
 
 console.log(Add_New_Enterprise("Предприятие 934"))
