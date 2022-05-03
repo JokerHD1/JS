@@ -601,23 +601,37 @@ function get_Enterprise_Name (name_1)
 console.log(get_Enterprise_Name("Отдел аналитики"))
 
 //3. Написать функцию, которая будет добавлять предприятие. В качестве аргумента принимает название предприятия
-console.log(enterprises.slice(-1)[0].departments.slice(-1)[0].id + 1)
+
 function Add_New_Enterprise (New_Enterprise)
 {
-enterprises.push(New_Enterprise, enterprises.slice(-1)[0].departments.slice(-1)[0].id + 1, [])
+    let New_Enterprise_Obj =
+        {
+            id: enterprises.slice(-1)[0].departments.slice(-1)[0].id + 1,
+            //ЧТО БУДЕТ, ЕСЛИ НЕТ ОТДЕЛОВ СОВСЕМ?
+            name: New_Enterprise,
+            departments: []
+        }
+    enterprises.push(New_Enterprise_Obj)
     return enterprises
 }
 
-console.log(Add_New_Enterprise("Предприятие 934"))
+console.log(Add_New_Enterprise("Предприятие 4"))
 
 //4. Написать функцию, которая будет добавлять отдел в предприятие. В качестве аргумента принимает id предприятия, в которое будет добавлен отдел и название отдела.
 
 function Add_New_Department (Enterprise_ID, New_Department)
 {
-
+    let New_Department_Obj =
+        {
+            id: "ТУТ ПОДСЧИТЫВАЕТСЯ ПОСЛЕДНИЙ АЙДИШНИК И ПРИСВАИВАЕТСЯ НОВЫЙ",
+            name: New_Department,
+            employees_count: 0,
+        }
+        //TODO ЗДЕСЬ НУЖНО ВЫБИРАТЬ ПРЕДПРИЯТИЕ И ПУШИТЬ В САМЫЙ ЕГО КОНЕЦ
+    enterprises.push(New_Department_Obj)
 }
 
-console.log(Add_New_Department(4, "Отдел расследований"))
+console.log(Add_New_Department(11, "Новый отдел"))
 
 //5. Написать функцию для редактирования названия предприятия. Принимает в качестве аргумента id предприятия и новое имя предприятия.
 
