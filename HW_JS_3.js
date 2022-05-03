@@ -552,14 +552,29 @@ function get_Enterprise_Name (name_1)
     if (typeof name_1 === "number")
     {
         //проверка перебором из первого задания, есть ли такой номер id отдела
-        //Если есть, возвратить название предпирятия с текущим i name
-        //Если нет, вернуть "Проверьте вводимые значения"
+        for (let i = 0; i < enterprises.length; i++)
+        {
+            for (let k = 0; k< enterprises[i].departments.length; k++)
+            {
+                if (name_1 === enterprises[i].departments[k].id)
+                {
+                    return enterprises[i].name
+                }
+            }
+        }
     }
     else if (typeof name_1 === "string")
     {
-        //проверка перебором из первого задания, есть ли такое название отдела
-        //Если есть, возвратить название предпирятия с текущим i name
-        //Если нет, вернуть "Проверьте вводимые значения"
+        for (let i = 0; i < enterprises.length; i++)
+        {
+            for (let k = 0; k< enterprises[i].departments.length; k++)
+            {
+                if (name_1 === enterprises[i].departments[k].name)
+                {
+                    return enterprises[i].name
+                }
+            }
+        }
     }
     else return "Проверьте вводимые значения"
 }
@@ -628,6 +643,7 @@ function Employee_Move (ID_first, ID_second)
 }
 
 console.log(Employee_Move(1,2))
+
 /*Task 4****
 
 В файле task4.txt вы найдете разноуровневый массив объектов. Очень похожий на массив из 3го задания,
