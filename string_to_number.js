@@ -68,4 +68,7 @@ function getNumber (text) {
     return result
 }
 
-console.log(getNumber('twenty one million twenty one thousand one hundred twenty two'))
+console.log(getNumber('two hundred thirty one'))
+//не работает любое число в units,
+//которое уже встречается в magnitudes
+// например one hundred twenty one - выведет 100
