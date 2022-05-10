@@ -68,4 +68,4 @@ function getNumber (text) {
     return result
 }
 
-console.log(getNumber('seven million and seven'))
+console.log(getNumber('twenty one million twenty one thousand one hundred twenty two'))
