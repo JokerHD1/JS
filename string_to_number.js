@@ -1,4 +1,4 @@
-let variable = {
+let units = {
     "zero":0,
     "one":1,
     "two":2,
@@ -9,7 +9,7 @@ let variable = {
     "seven":7,
     "eight":8,
     "nine":9,
-    "ten":10,
+    "ten": 10,
     "eleven":11,
     "twelve":12,
     "thirteen":13,
@@ -19,6 +19,12 @@ let variable = {
     "seventeen":17,
     "eighteen":18,
     "nineteen":19,
+
+
+}
+
+let tens = {
+
     "twenty":20,
     "thirty":30,
     "forty":40,
@@ -27,8 +33,39 @@ let variable = {
     "seventy":70,
     "eighty":80,
     "ninety":90,
+}
+
+let magnitude = {
     "hundred":100,
     "thousand":1000,
     "million":1000000
 }
 
+function getNumber (text) {
+    let textArray = text.toLowerCase().replace(/ and /g, ' ').split(' ')
+    let temp = null
+    let result = 0
+    for (let word of textArray) {
+        if (units.hasOwnProperty(word)) {
+            if (textArray.indexOf(word) === textArray.length - 1) {
+                result += (temp === null) ? units[word] : temp + units[word]
+            } else {
+                temp = (temp === null) ? units[word] : temp + units[word]
+            }
+        } else if (tens.hasOwnProperty(word)) {
+            if (textArray.indexOf(word) === textArray.length - 1) {
+                result += units[word]
+            } else {
+                temp = tens[word]
+            }
+        } else if (magnitude.hasOwnProperty(word)) {
+            result += magnitude[word] * temp
+            temp = null
+        } else {
+            return 'wrong text'
+        }
+    }
+    return result
+}
+
+console.log(getNumber('seven million and seven'))
