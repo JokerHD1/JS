@@ -1,4 +1,4 @@
-let units = {
+let Units_And_Tens = {
     "zero":0,
     "one":1,
     "two":2,
@@ -19,12 +19,6 @@ let units = {
     "seventeen":17,
     "eighteen":18,
     "nineteen":19,
-
-
-}
-
-let tens = {
-
     "twenty":20,
     "thirty":30,
     "forty":40,
@@ -32,43 +26,36 @@ let tens = {
     "sixty":60,
     "seventy":70,
     "eighty":80,
-    "ninety":90,
+    "ninety":90
 }
 
-let magnitude = {
+let Large_Num = {
     "hundred":100,
     "thousand":1000,
     "million":1000000
 }
 
-function getNumber (text) {
-    let textArray = text.toLowerCase().replace(/ and /g, ' ').split(' ')
-    let temp = null
-    let result = 0
-    for (let word of textArray) {
-        if (units.hasOwnProperty(word)) {
-            if (textArray.indexOf(word) === textArray.length - 1) {
-                result += (temp === null) ? units[word] : temp + units[word]
-            } else {
-                temp = (temp === null) ? units[word] : temp + units[word]
-            }
-        } else if (tens.hasOwnProperty(word)) {
-            if (textArray.indexOf(word) === textArray.length - 1) {
-                result += units[word]
-            } else {
-                temp = tens[word]
-            }
-        } else if (magnitude.hasOwnProperty(word)) {
-            result += magnitude[word] * temp
-            temp = null
-        } else {
-            return 'wrong text'
+function getNumber(text) {
+    let wordArray = text.toLowerCase().toString().split(/[\s-]+/);
+    let result = 0;
+    let acc = 0;
+    wordArray.forEach(function(textNumber){
+        let num = Units_And_Tens[textNumber];
+        if (num != null) {
+            acc = acc + num;
         }
-    }
-    return result
+        else if (textNumber === "hundred") {
+            acc = acc * 100;
+        }
+        else {
+            let large_num = Large_Num[textNumber];
+            if (large_num!=null) {
+                result = result + acc * large_num;
+                acc = 0;
+            }
+        }
+    });
+    return acc + result;
 }
 
-console.log(getNumber('two hundred thirty one'))
-//не работает любое число в units,
-//которое уже встречается в magnitudes
-// например one hundred twenty one - выведет 100
+console.log(getNumber('twenty one'))
