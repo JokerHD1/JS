@@ -37,6 +37,7 @@ age_1 +  “ It’s less than ” + age_2 </pre>
 <pre> 31. Если age_1 >=  age_2 и age_1 <  age_3, вывести в консоль “Welcome  !” </pre>
 <pre> 32. Если age_1  > age_3, вывести в консоль “Keep calm and look Culture channel”. </pre>
 <pre> 33. Иначе выводите “Technical work”. </pre>
+</details>
 ## 
   <details>
 <summary> <b> HW_1* Задания с разным количеством звездочек:) </b> </summary> 
