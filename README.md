@@ -1,6 +1,6 @@
 # JS
 <details> 
-  <summary> ## HW_1 </summary>
+  <summary> <b> HW_1 </b> </summary>
 ### 1. Создать переменную “item_1”
 ### 2. Присвоить переменной item_1 цифру 5.
 ### 3. Вывести в консоль item_1.
