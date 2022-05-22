@@ -89,7 +89,7 @@ age_1 +  “ It’s less than ” + age_2 </pre>
 ###
 ### Проверки: 'abba', 'Abba'
 </details>
-##
+
 ## HW_3
 ### Task 1.
 ###
